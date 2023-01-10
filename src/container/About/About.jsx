@@ -3,35 +3,16 @@ import { motion } from "framer-motion";
 
 import { images } from "../../constants";
 import "./About.scss";
-
-const abouts = [
-  {
-    title: "Web Development",
-    description:
-      "Elon Musk cofounded the electronic payment firm PayPal, and in 2002 he founded SpaceX, a company that makes rockets and spacecraft. He was a major early funder of Tesla, which makes electric cars and batteries, and became its chief executive officer in 2008. He purchased the social media service Twitter in 2022",
-    imgUrl: images.about01,
-  },
-  {
-    title: "Frontend Development",
-    description:
-      "Elon Musk cofounded the electronic payment firm PayPal, and in 2002 he founded SpaceX, a company that makes rockets and spacecraft. He was a major early funder of Tesla, which makes electric cars and batteries, and became its chief executive officer in 2008. He purchased the social media service Twitter in 2022",
-    imgUrl: images.about02,
-  },
-  {
-    title: "Backend Development",
-    description:
-      "Elon Musk cofounded the electronic payment firm PayPal, and in 2002 he founded SpaceX, a company that makes rockets and spacecraft. He was a major early funder of Tesla, which makes electric cars and batteries, and became its chief executive officer in 2008. He purchased the social media service Twitter in 2022",
-    imgUrl: images.about03,
-  },
-  {
-    title: "MERN Stack Development",
-    description:
-      "Elon Musk cofounded the electronic payment firm PayPal, and in 2002 he founded SpaceX, a company that makes rockets and spacecraft. He was a major early funder of Tesla, which makes electric cars and batteries, and became its chief executive officer in 2008. He purchased the social media service Twitter in 2022",
-    imgUrl: images.about04,
-  },
-];
+import { urlFor, client } from "../../client";
 
 const About = () => {
+  const [abouts, setAbouts] = useState([]);
+
+  useEffect(() => {
+    const query = '*[_type == "abouts"]';
+    client.fetch(query).then((data) => setAbouts(data));
+  }, []);
+
   return (
     <>
       <h2 className="head-text">
