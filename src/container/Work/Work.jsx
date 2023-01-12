@@ -4,22 +4,98 @@ import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
+import { images } from "../../constants";
 import "./Work.scss";
+
+const data = [
+  {
+    imgUrl: images.about02,
+    name: "Modern UI/UX Website",
+    projectLink: "",
+    codeLink: "",
+    title: "Modern UI/UX Website",
+    description: "A modern UI/UX portfolio website",
+    tags: ["UI/UX", "All"],
+  },
+  {
+    imgUrl: images.about02,
+    name: "Modern UI/UX Website",
+    projectLink: "",
+    codeLink: "",
+    title: "Modern UI/UX Website",
+    description: "A modern UI/UX portfolio website",
+    tags: ["UI/UX", "All"],
+  },
+  {
+    imgUrl: images.about02,
+    name: "Modern UI/UX Website",
+    projectLink: "",
+    codeLink: "",
+    title: "Modern UI/UX Website",
+    description: "A modern UI/UX portfolio website",
+    tags: ["UI/UX", "All"],
+  },
+  {
+    imgUrl: images.about02,
+    name: "Modern UI/UX Website",
+    projectLink: "",
+    codeLink: "",
+    title: "Modern UI/UX Website",
+    description: "A modern UI/UX portfolio website",
+    tags: ["UI/UX", "All"],
+  },
+  {
+    imgUrl: images.about02,
+    name: "Modern UI/UX Website",
+    projectLink: "",
+    codeLink: "",
+    title: "Modern UI/UX Website",
+    description: "A modern UI/UX portfolio website",
+    tags: ["UI/UX", "All"],
+  },
+  {
+    imgUrl: images.about02,
+    name: "Modern UI/UX Website",
+    projectLink: "",
+    codeLink: "",
+    title: "Modern UI/UX Website",
+    description: "A modern UI/UX portfolio website",
+    tags: ["UI/UX", "All"],
+  },
+  {
+    imgUrl: images.about02,
+    name: "Modern UI/UX Website",
+    projectLink: "",
+    codeLink: "",
+    title: "Modern UI/UX Website",
+    description: "A modern UI/UX portfolio website",
+    tags: ["UI/UX", "All"],
+  },
+  {
+    imgUrl: images.about02,
+    name: "Modern UI/UX Website",
+    projectLink: "",
+    codeLink: "",
+    title: "Modern UI/UX Website",
+    description: "A modern UI/UX portfolio website",
+    tags: ["UI/UX", "All"],
+  },
+];
 
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
-  const [works, setWorks] = useState([]);
-  const [filterWork, setFilterWork] = useState([]);
+  const [works, setWorks] = useState(data);
+  const [filterWork, setFilterWork] = useState(data);
 
-  useEffect(() => {
-    const query = '*[_type == "works"]';
+  // useEffect(() => {
+  //   const query = '*[_type == "works"]';
 
-    client.fetch(query).then((data) => {
-      setWorks(data);
-      setFilterWork(data);
-    });
-  }, []);
+  //   client.fetch(query).then((data) => {
+  //     setWorks(data);
+  //     setFilterWork(data);
+  //   });
+  // }, []);
 
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
@@ -38,9 +114,7 @@ const Work = () => {
   return (
     <>
       <h2 className="head-text">
-        My Creative <span>Portifolio </span>
-        <br />
-        section
+        My Creative <span>Portifolio </span>section
       </h2>
 
       <div className="app__work-filter">
@@ -67,7 +141,7 @@ const Work = () => {
         {filterWork.map((work, index) => (
           <div className="app__work-item app__flex" key={index}>
             <div className="app__work-img app__flex">
-              <img src={urlFor(work.imgUrl)} alt={work.name} />
+              <img src={work.imgUrl} alt={work.name} />
               <motion.div
                 whileHover={{ opacity: [0, 1] }}
                 transition={{

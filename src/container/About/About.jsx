@@ -3,15 +3,43 @@ import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import "./About.scss";
+import { images } from "../../constants";
 import { urlFor, client } from "../../client";
 
-const About = () => {
-  const [abouts, setAbouts] = useState([]);
+const data = [
+  {
+    imgUrl: images.about01,
+    title: "Front-End Developer",
+    description:
+      "Responsible for developing new user-facing features, determining the structure and design of web pages, building reusable codes, optimizing page loading times, and using a variety of markup languages to create the web pages ",
+  },
+  {
+    imgUrl: images.about01,
+    title: "Front-End Developer",
+    description:
+      "Responsible for developing new user-facing features, determining the structure and design of web pages, building reusable codes, optimizing page loading times, and using a variety of markup languages to create the web pages ",
+  },
+  {
+    imgUrl: images.about01,
+    title: "Front-End Developer",
+    description:
+      "Responsible for developing new user-facing features, determining the structure and design of web pages, building reusable codes, optimizing page loading times, and using a variety of markup languages to create the web pages ",
+  },
+  {
+    imgUrl: images.about01,
+    title: "Front-End Developer",
+    description:
+      "Responsible for developing new user-facing features, determining the structure and design of web pages, building reusable codes, optimizing page loading times, and using a variety of markup languages to create the web pages ",
+  },
+];
 
-  useEffect(() => {
-    const query = '*[_type == "abouts"]';
-    client.fetch(query).then((data) => setAbouts(data));
-  }, []);
+const About = () => {
+  const [abouts, setAbouts] = useState(data);
+
+  // useEffect(() => {
+  //   const query = '*[_type == "abouts"]';
+  //   client.fetch(query).then((data) => setAbouts(data));
+  // }, []);
 
   return (
     <>
@@ -30,11 +58,14 @@ const About = () => {
             className="app__profile-item"
             key={about.title + index}
           >
-            <img src={urlFor(about.imgUrl)} alt={about.title} />
+            <img src={about.imgUrl} alt={about.title} />
             <h2 className="bold-text" style={{ marginTop: "20" }}>
               {about.title}
             </h2>
-            <p className="p-text" style={{ marginTop: "10" }}>
+            <p
+              className="p-text"
+              style={{ marginTop: "10", textAlign: "justify" }}
+            >
               {about.description}
             </p>
           </motion.div>

@@ -1,6 +1,7 @@
 .app__footer {
     flex: 1;
     width: 100%;
+    margin-top: 3rem;
     flex-direction: column;
 }
 
@@ -10,7 +11,7 @@
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap-reverse;
-    margin: 4rem 2rem 2rem;
+    margin: 3rem 2rem 0rem;
 
     .app__footer-card {
         min-width: 290px;
@@ -97,7 +98,7 @@
     }
 
     button {
-        padding: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
         border-radius: 10px;
         border: none;
         background-color: var(--secondary-color);
@@ -105,7 +106,7 @@
         font-weight: 500;
         color: var(--white-color);
         outline: none;
-        margin: 2rem 0 0 0;
+        margin: 0.5rem 0 0 0;
         font-family: var(--font-base);
         cursor: pointer;
     }

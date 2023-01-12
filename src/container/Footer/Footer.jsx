@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
-import { client } from "../../client";
+// import { client } from "../../client";
 import "./Footer.scss";
 
 const Footer = () => {
@@ -24,17 +25,40 @@ const Footer = () => {
   const handleSubmit = () => {
     setLoading(true);
 
-    const contact = {
-      _type: "contact",
+    var templateParams = {
       name: name,
       email: email,
       message: message,
     };
 
-    client.create(contact).then(() => {
-      setLoading(false);
-      setIsFormSubmitted(true);
-    });
+    emailjs
+      .send(
+        "service_z950ryd",
+        "template_jumukrz",
+        templateParams,
+        "goqicETzULETvnhhM"
+      )
+      .then(
+        function (response) {
+          setLoading(false);
+          setIsFormSubmitted(true);
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
+      );
+
+    // const contact = {
+    //   _type: "contact",
+    //   name: name,
+    //   email: email,
+    //   message: message,
+    // };
+
+    // client.create(contact).then(() => {
+    //   setLoading(false);
+    //   setIsFormSubmitted(true);
+    // });
   };
   return (
     <>
@@ -42,14 +66,14 @@ const Footer = () => {
       <div className="app__footer-cards">
         <div className="app__footer-card">
           <img src={images.email} alt="email" />
-          <a href="mailto:hello@mechael.com" className="p-text">
-            hello@micael.com
+          <a href="mailto:career.hailat@gmail.com" className="p-text">
+            career.hailat@gmail.com
           </a>
         </div>
         <div className="app__footer-card">
           <img src={images.mobile} alt="mobile" />
-          <a href="tel: +1 (123) 456-789" className="p-text">
-            +1 (123) 456-789
+          <a href="tel: +251 (912) 828-397" className="p-text">
+            +251 (912) 828-397
           </a>
         </div>
       </div>

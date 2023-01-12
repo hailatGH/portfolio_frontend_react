@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "@sanity/client": "^4.0.0",
     "@sanity/image-url": "^1.0.1",
     "framer-motion": "^8.1.8",
