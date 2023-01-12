@@ -5,13 +5,14 @@
 }
 
 .app__testimonial-item {
-    width: 60%;
-    min-height: 320px;
+    width: 70%;
+    max-height: 300px;
+    min-height: 20px;
     background-color: var(--white-color);
     display: flex;
     padding: 2rem;
     margin-top: 2rem;
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: 0 0 30px rgba(0,0,0,0.1);
 
     transition: all 0.3s ease-in-out;
@@ -54,8 +55,10 @@
     align-items: flex-start;
 
     p {
-        font-size: 1.25rem;
+        font-size: 1rem;
         line-height: 2rem;
+        text-align: justify;
+        font-style: italic;
         color: var(--black-color);
         font-family: var(--font-base);
     }

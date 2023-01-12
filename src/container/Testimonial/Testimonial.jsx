@@ -1,10 +1,63 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { Carousel } from "antd";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
+import { images } from "../../constants";
 import { urlFor, client } from "../../client";
 import "./Testimonial.scss";
+
+const data = [
+  {
+    imgUrl: images.css,
+    name: "CSS",
+    company: "CSS Company",
+    feedback:
+      "A passionate, energetic and detail-oriented developer and IT Specialist with the ability to build scalable and performant backend products as well as exceptional, responsive and creative digital experiences within tight deadlines. Currently working to expand into the cybersecurity industry.",
+  },
+  {
+    imgUrl: images.sass,
+    name: "Some One",
+    company: "Some Company",
+    feedback: "Some description about me!",
+  },
+  {
+    imgUrl: images.flutter,
+    name: "Some One",
+    company: "Some Company",
+    feedback: "Some description about me!",
+  },
+  {
+    imgUrl: images.react,
+    name: "Some One",
+    company: "Some Company",
+    feedback: "Some description about me!",
+  },
+];
+
+const brandsData = [
+  {
+    id: 1,
+    imgUrl: images.bolt,
+    name: "Adidas",
+  },
+  {
+    id: 2,
+    imgUrl: images.spotify,
+    name: "Adidas",
+  },
+  {
+    id: 3,
+    imgUrl: images.amazon,
+    name: "Adidas",
+  },
+  {
+    id: 4,
+    imgUrl: images.skype,
+    name: "Adidas",
+  },
+];
 
 const Testimonial = () => {
   const [brands, setBrands] = useState([]);
@@ -16,30 +69,23 @@ const Testimonial = () => {
   };
 
   useEffect(() => {
-    const query = '*[_type == "testimonials"]';
-    const brandsQuery = '*[_type == "brands"]';
-
-    client.fetch(query).then((data) => {
-      setTestimonials(data);
-    });
-    client.fetch(brandsQuery).then((data) => {
-      setBrands(data);
-    });
+    setTestimonials(data);
+    setBrands(brandsData);
   }, []);
 
-  const test = testimonials[currentIndex];
+  const testimonial = testimonials[currentIndex];
 
   return (
     <>
       {testimonials.length && (
         <>
           <div className="app__testimonial-item app__flex">
-            <img src={urlFor(test.imgurl)} alt="testimonial" />
+            <img src={testimonial.imgUrl} alt="testimonial" />
             <div className="app__testimonial-content">
-              <p className="p-text">{test.feedback}</p>
+              <p className="p-text">{testimonial.feedback}</p>
               <div>
-                <h4 className="bold-text">{test.name}</h4>
-                <h5 className="p-text">{test.company}</h5>
+                <h4 className="bold-text">{testimonial.name}</h4>
+                <h5 className="p-text">{testimonial.company}</h5>
               </div>
             </div>
           </div>
@@ -78,9 +124,9 @@ const Testimonial = () => {
           <motion.div
             whileInView={{ opacity: [0, 1] }}
             transition={{ duration: 0.5, type: "tween" }}
-            key={brand._id}
+            key={brand.id}
           >
-            <img src={urlFor(brand.imgUrl)} alt={brand.name} />
+            <img src={brand.imgUrl} alt={brand.name} />
           </motion.div>
         ))}
       </div>
